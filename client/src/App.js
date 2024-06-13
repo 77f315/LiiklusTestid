@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Test from './components/Test';
 
 function App() {
   const [testdata, setTestdata] = useState();
@@ -12,14 +14,12 @@ function App() {
     )
   }, [])
   return (
-    <>
-    {(typeof testdata === 'undefined') ? (
-      <p>no bueno</p>
-    ) : (
-      <p>{testdata.test}</p>
-    )}
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Test/>}></Route>
+      </Routes>
+    </Router>
+);
 }
 
 export default App
