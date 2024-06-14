@@ -28,8 +28,8 @@ const questions = [
         ]
     },
     {
-        testnr: 4,
-        id: 1,
+        testnr: 1,
+        id: 4,
         question: "Mida tähendab märgi ja lisateatetahvli ühend",
         image: "https://www.gosafe.ee/media/inten/product/erply.s3.amazonaws.com/3169-3169_5cbf70cb7df842.33545129_132_large.png",
         image2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrDI4-yHkT-RrTg8JoZcR6gDPwINzt2ErcQ&s", 
