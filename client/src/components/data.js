@@ -24,6 +24,7 @@ const questions = [
         image: "https://sildid-kleebised.ee/wp-content/uploads/2022/06/stop-liiklusmark.png",
         options: [
             { id: 'a', text: "Jääma seisma märgi ees." },
+            { id: 'b', text: "Jääma stoppjoone puudumisel seisma lõikuva sõidutee ääre ees." },
             { id: 'b', text: "Jääma stoppjoone puudumisel seisma lõikuva sõidutee ääre ees." }
         ]
     },
