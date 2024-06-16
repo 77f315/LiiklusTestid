@@ -48,3 +48,11 @@
 .question-container{
     display: flex;
 }
+.container .correct{
+    background: #dffff2;
+    border: #00d397;
+}
+.container .wrong{
+    background: #FFEBEB;
+    border: #FF4A4A;
+}
