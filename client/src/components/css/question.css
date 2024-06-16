@@ -45,3 +45,6 @@
     margin: auto;
     font-size: 18px;
 }
+.question-container{
+    display: flex;
+}
