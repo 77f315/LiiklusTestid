@@ -14,8 +14,11 @@ const Question = () => {
   const Option4 = useRef(null);
 
   const option_array = [Option1, Option2, Option3, Option4];
+  const [answeredQuestions, setAnsweredQuestions] = useState(new Map());
 
   const checkAns = (e, ans) => {
+    setAnsweredQuestions(answeredQuestions[question.id] = option_array);
+
     if (!lock) {
       if (questions[index].ans === ans) {
         e.target.classList.add("correct");
@@ -28,7 +31,10 @@ const Question = () => {
       setLock(true);
     }
   };
-
+  const checkAnswered = (id) => {
+    setLock(true);
+    console.log(question.id)
+  }
   const nextQuestion = () => {
     if (index < questions.length - 1) {
       setIndex(index + 1);
@@ -44,19 +50,25 @@ const Question = () => {
 
   const previousQuestion = () => {
     if (index > 0) {
+
       setIndex(index - 1);
       setLock(false);
       option_array.forEach((option) => {
-        if (option.current) {
+      if (option.current) {
           option.current.classList.remove("wrong");
           option.current.classList.remove("correct");
-        }
+      }
+      //if (answeredQuestions.has(question.id)){
+    
+      checkAnswered(question.id - 1);
+      //}
       });
     }
   };
 
   const question = questions[index];
 
+  
   return (
     <div className="container">
       <h1>Test</h1>
