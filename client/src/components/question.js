@@ -7,68 +7,76 @@ const Question = () => {
   const [lock, setLock] = useState(false);
   const [score, setScore] = useState(0);
   const [wrong, setWrong] = useState(0);
+  const [answeredQuestions, setAnsweredQuestions] = useState(new Map());
 
   const Option1 = useRef(null);
   const Option2 = useRef(null);
   const Option3 = useRef(null);
   const Option4 = useRef(null);
 
-  const option_array = [Option1, Option2, Option3, Option4];
-  const [answeredQuestions, setAnsweredQuestions] = useState(new Map());
+  const optionArray = [Option1, Option2, Option3, Option4];
 
   const checkAns = (e, ans) => {
-    setAnsweredQuestions(answeredQuestions[question.id] = option_array);
-
     if (!lock) {
-      if (questions[index].ans === ans) {
+      const isCorrect = questions[index].ans === ans;
+      setAnsweredQuestions((prev) => new Map(prev).set(index, { selected: ans, correct: isCorrect }));
+      
+      if (isCorrect) {
         e.target.classList.add("correct");
         setScore(score + 1);
       } else {
         e.target.classList.add("wrong");
-        option_array[questions[index].ans - 1].current.classList.add("correct");
+        if (optionArray[questions[index].ans - 1].current) {
+          optionArray[questions[index].ans - 1].current.classList.add("correct");
+        }
         setWrong(wrong + 1);
       }
       setLock(true);
     }
   };
-  const checkAnswered = (id) => {
-    setLock(true);
-    console.log(question.id)
-  }
+
   const nextQuestion = () => {
     if (index < questions.length - 1) {
       setIndex(index + 1);
-      setLock(false);
-      option_array.forEach((option) => {
-        if (option.current) {
-          option.current.classList.remove("wrong");
-          option.current.classList.remove("correct");
-        }
-      });
+      resetOptions();
+      checkLock(index + 1);
     }
   };
 
   const previousQuestion = () => {
     if (index > 0) {
-
       setIndex(index - 1);
-      setLock(false);
-      option_array.forEach((option) => {
+      resetOptions();
+      checkLock(index - 1);
+    }
+  };
+
+  const resetOptions = () => {
+    optionArray.forEach((option) => {
       if (option.current) {
-          option.current.classList.remove("wrong");
-          option.current.classList.remove("correct");
+        option.current.classList.remove("wrong");
+        option.current.classList.remove("correct");
       }
-      //if (answeredQuestions.has(question.id)){
-    
-      checkAnswered(question.id - 1);
-      //}
-      });
+    });
+  };
+
+  const checkLock = (questionIndex) => {
+    const answered = answeredQuestions.get(questionIndex);
+    if (answered) {
+      setLock(true);
+      if (optionArray[answered.selected - 1].current) {
+        optionArray[answered.selected - 1].current.classList.add(answered.correct ? "correct" : "wrong");
+      }
+      if (!answered.correct && optionArray[questions[questionIndex].ans - 1].current) {
+        optionArray[questions[questionIndex].ans - 1].current.classList.add("correct");
+      }
+    } else {
+      setLock(false);
     }
   };
 
   const question = questions[index];
 
-  
   return (
     <div className="container">
       <h1>Test</h1>

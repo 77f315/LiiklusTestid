@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-import questions from "./data";
 import Question from "./question";
 
 function Test() {
