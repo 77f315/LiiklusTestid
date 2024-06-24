@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./css/question.css";
 import questions from "./data";
+import { useNavigate } from "react-router-dom";
 
 const Question = () => {
   const [index, setIndex] = useState(0);
@@ -77,7 +78,11 @@ const Question = () => {
   };
 
   const question = questions[index];
-
+  
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate('/results')
+  }
   return (
     <div className="container">
       <h1>Test</h1>
@@ -130,7 +135,7 @@ const Question = () => {
       <div className="question-container">
         <button onClick={previousQuestion}>Eelmine küsimus</button>
         {index < questions.length - 1 && <button onClick={nextQuestion}>Järgmine küsimus</button>}
-        {index === questions.length - 1 && <button onClick={console.log('submit button test')}> Submit</button>}
+        {index === questions.length - 1 && <button onClick={handleSubmit}> Submit</button>}
       </div>
       <div className="index">
         <div>
