@@ -16,11 +16,12 @@ const Question = () => {
 
   const optionArray = [Option1, Option2, Option3, Option4];
 
+  
   const checkAns = (e, ans) => {
     if (!lock) {
       const isCorrect = questions[index].ans === ans;
       setAnsweredQuestions((prev) => new Map(prev).set(index, { selected: ans, correct: isCorrect }));
-      
+
       if (isCorrect) {
         e.target.classList.add("correct");
         setScore(score + 1);
@@ -128,7 +129,8 @@ const Question = () => {
       </ul>
       <div className="question-container">
         <button onClick={previousQuestion}>Eelmine küsimus</button>
-        <button onClick={nextQuestion}>Järgmine küsimus</button>
+        {index < questions.length - 1 && <button onClick={nextQuestion}>Järgmine küsimus</button>}
+        {index === questions.length - 1 && <button onClick={console.log('submit button test')}> Submit</button>}
       </div>
       <div className="index">
         <div>
