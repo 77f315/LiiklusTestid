@@ -21,7 +21,10 @@ const Question = () => {
   const checkAns = (e, ans) => {
     if (!lock) {
       const isCorrect = questions[index].ans === ans;
+      // save answered question
       setAnsweredQuestions((prev) => new Map(prev).set(index, { selected: ans, correct: isCorrect }));
+      const answeredQuestionsobj = Object.fromEntries(answeredQuestions);
+      window.localStorage.setItem('AnsQuestion', JSON.stringify(answeredQuestionsobj));
 
       if (isCorrect) {
         e.target.classList.add("correct");
@@ -33,6 +36,8 @@ const Question = () => {
         }
         setWrong(wrong + 1);
       }
+      window.localStorage.setItem("correct", JSON.stringify(score));
+      window.localStorage.setItem("wrong", JSON.stringify(wrong));
       setLock(true);
     }
   };
