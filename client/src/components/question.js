@@ -83,6 +83,14 @@ const Question = () => {
   const handleSubmit = () => {
     navigate('/results')
   }
+  const handleReset = () =>{
+    setAnsweredQuestions(new Map());
+    resetOptions();
+    setScore(0);
+    setWrong(0);
+    setIndex(0);
+    setLock(false);
+  }
   return (
     <div className="container">
       <h1>Test</h1>
@@ -143,6 +151,9 @@ const Question = () => {
         </div>
         <div>
           {score} out of {score + wrong}
+        </div>
+        <div>
+          <button onClick={handleReset}>Reset</button>
         </div>
       </div>
     </div>
