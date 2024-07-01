@@ -98,53 +98,53 @@ const Question = () => {
   }
   return (
     <div className="container">
-      <h1>Test</h1>
-      <hr />
-      <h2>
-        {question.id}. {question.question}
-      </h2>
-      <ul>
-        {question.options[0] && (
-          <li
-            ref={Option1}
-            onClick={(e) => {
-              checkAns(e, 1);
-            }}
-          >
-            {question.options[0].text}
-          </li>
-        )}
-        {question.options[1] && (
-          <li
-            ref={Option2}
-            onClick={(e) => {
-              checkAns(e, 2);
-            }}
-          >
-            {question.options[1].text}
-          </li>
-        )}
-        {question.options[2] && (
-          <li
-            ref={Option3}
-            onClick={(e) => {
-              checkAns(e, 3);
-            }}
-          >
-            {question.options[2].text}
-          </li>
-        )}
-        {question.options[3] && (
-          <li
-            ref={Option4}
-            onClick={(e) => {
-              checkAns(e, 4);
-            }}
-          >
-            {question.options[3].text}
-          </li>
-        )}
-      </ul>
+    <h1>Test</h1>
+    <hr />
+    <h2>
+      {question.id}. {question.question}
+    </h2>
+    <ul>
+      {question.options[0] && (
+        <li
+          ref={Option1}
+          onClick={(e) => {
+            checkAns(e, 1);
+          }}
+        >
+          {question.options[0].text}
+        </li>
+      )}
+      {question.options[1] && (
+        <li
+          ref={Option2}
+          onClick={(e) => {
+            checkAns(e, 2);
+          }}
+        >
+          {question.options[1].text}
+        </li>
+      )}
+      {question.options[2] && (
+        <li
+          ref={Option3}
+          onClick={(e) => {
+            checkAns(e, 3);
+          }}
+        >
+          {question.options[2].text}
+        </li>
+      )}
+      {question.options[3] && (
+        <li
+          ref={Option4}
+          onClick={(e) => {
+            checkAns(e, 4);
+          }}
+        >
+          {question.options[3].text}
+        </li>
+      )}
+    </ul>
       <div className="question-container">
         <button onClick={previousQuestion}>Eelmine küsimus</button>
         {index < questions.length - 1 && <button onClick={nextQuestion}>Järgmine küsimus</button>}
